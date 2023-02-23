@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
-import { useAppDispatch } from "store/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "store/hooks/hooks";
 import {
   changeActiveUser,
   changeActiveView,
   searchTerm,
   sortType,
+  selectSearchTerm
 } from "store/features/users/usersSlice";
 import iconSearch from "assets/images/icon-search.svg";
 import iconSort from "assets/images/icon-filter.svg";
@@ -75,6 +76,7 @@ const Navigation = () => {
   const [isShowNav, setIsShowNav] = useState(false);
   const [activeNav, setActiveNav] = useState("");
   const dispatch = useAppDispatch();
+  const activeSearchTerm = useAppSelector(selectSearchTerm);
 
   const changeView: (view: ViewType, id: string) => void = (view, id) => {
     dispatch(changeActiveUser(id));
@@ -135,6 +137,7 @@ const Navigation = () => {
           <NavContentItemStyled isShow={activeNav === "search"}>
             <Input
               name="search"
+              defaultValue={activeSearchTerm ? activeSearchTerm : ''}
               type="search"
               required={false}
               placeholder="Search by name here..."

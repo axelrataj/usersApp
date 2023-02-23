@@ -61,7 +61,8 @@ export const slice = createSlice({
     },
     removeUser: (state: UsersState, action: PayloadAction<string>) => {
       state.usersList.splice(
-        state.usersList.findIndex((a) => a._id === action.payload), 1
+        state.usersList.findIndex((a) => a._id === action.payload),
+        1
       );
     },
     addUser(state: UsersState, action: PayloadAction<UserDataInterface>) {
@@ -77,7 +78,7 @@ export const slice = createSlice({
       state: UsersState,
       action: PayloadAction<MessageInterface>
     ) => {
-      state.activeMessage.type = action.payload.type; 
+      state.activeMessage.type = action.payload.type;
       state.activeMessage.content = action.payload.content;
     },
   },
@@ -124,6 +125,9 @@ export const sortUsers = (state: RootState) => {
     users: sortedUsers,
   };
 };
+
+export const selectSearchTerm: (state: RootState) => string = (state) =>
+  state.users.filters.search;
 
 export const {
   changeActiveUser,
