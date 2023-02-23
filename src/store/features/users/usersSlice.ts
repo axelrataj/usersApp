@@ -61,7 +61,7 @@ export const slice = createSlice({
     },
     removeUser: (state: UsersState, action: PayloadAction<string>) => {
       state.usersList.splice(
-        state.usersList.findIndex((a) => a._id === action.payload)
+        state.usersList.findIndex((a) => a._id === action.payload), 1
       );
     },
     addUser(state: UsersState, action: PayloadAction<UserDataInterface>) {
@@ -121,7 +121,6 @@ export const sortUsers = (state: RootState) => {
   });
 
   return {
-    ...state,
     users: sortedUsers,
   };
 };
