@@ -25,6 +25,7 @@ const CardContentStyled = styled.div``;
 
 const CardHeadingStyled = styled.div`
   text-transform: capitalize;
+        font-weight: ${({ theme }) => theme.weights.regular};
 `;
 
 const CardTextStyled = styled.p`

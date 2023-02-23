@@ -114,7 +114,7 @@ export const sortUsers = (state: RootState) => {
 
   const activeSortType: SortType = state.users.filters.sortType;
 
-  const sortedUsers = filteredUsers.sort((a, b) => {
+  const sortedUsers: UserDataInterface[] = filteredUsers.sort((a, b) => {
     const x = a[activeSortType];
     const y = b[activeSortType];
     return x < y ? -1 : x > y ? 1 : 0;
